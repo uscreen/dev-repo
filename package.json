@@ -1,0 +1,47 @@
+{
+  "name": "@uscreen.de/dev-repo",
+  "version": "0.0.0",
+  "description": "cli to manage dev repos",
+  "main": "index.js",
+  "bin": {
+    "dev": "./bin/cli.js"
+  },
+  "repository": "git@gitlab.uscreen.net:uscreen/npm/dev-repo.git",
+  "author": "Marcus Spiegel <spiegel@uscreen.de>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint '**/*.js' --fix",
+    "test": "tap test/**/*.test.js",
+    "test:cov": "tap --coverage-report=html test/**/*.test.js",
+    "test:ci": "tap --coverage-report=text-summary test/**/*.test.js"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "commander": "^4.1.0",
+    "fs-extra": "^8.1.0",
+    "read-pkg-up": "^7.0.0",
+    "write-pkg": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "lint-staged": "^9.4.1",
+    "prettier": "^1.18.2",
+    "tap": "^14.6.9",
+    "yorkie": "^2.0.0"
+  }
+}
