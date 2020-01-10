@@ -4,7 +4,9 @@
   "description": "cli to manage dev repos",
   "main": "index.js",
   "bin": {
-    "dev": "./bin/cli.js"
+    "dev": "./bin/cli.js",
+    "dev-list": "./bin/cli-list.js",
+    "dev-install": "./bin/cli-install.js"
   },
   "repository": "git@gitlab.uscreen.net:uscreen/npm/dev-repo.git",
   "author": "Marcus Spiegel <spiegel@uscreen.de>",
