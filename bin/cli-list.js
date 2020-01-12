@@ -10,16 +10,27 @@ const fs = require('fs')
 const igit = require('isomorphic-git')
 igit.plugins.set('fs', fs)
 
-const { root, version, REPO_DIR, repos, error } = require('../src/utils')
+const {
+  root,
+  version,
+  REPO_DIR,
+  repos,
+  error,
+  isRepoDirectory,
+  isGitRepo
+} = require('../src/utils')
 
 /**
  * gather infos (version, revision, etc.) per repos
  */
 const repositoryInfo = async (remote, local) => {
+  // is directory and repo existing?
+  if (!isRepoDirectory(local) || !isGitRepo(local)) return
+
   const dir = path.resolve(root, REPO_DIR, local)
   const { packageJson } = readPkgUp.sync({ cwd: dir })
-  const branch = await igit.currentBranch({ dir })
 
+  const branch = await igit.currentBranch({ dir })
   const repository = git.open(dir)
   const { ahead, behind } = repository.getAheadBehindCount()
   const Status = repository.getStatus()
