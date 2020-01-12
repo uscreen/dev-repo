@@ -2,19 +2,75 @@
 
 const cli = require('commander')
 const chalk = require('chalk')
+const path = require('path')
+const readPkgUp = require('read-pkg-up')
+const git = require('git-utils')
+
+const fs = require('fs')
+const igit = require('isomorphic-git')
+igit.plugins.set('fs', fs)
 
 // const { fetchAllUsers, userList, listAllUsers } = require('../src/users')
 
 /**
- * package.json content
+ * the root directory of the project
+ */
+const root = path.resolve(process.cwd())
+
+/**
+ * my package.json content
  */
 const { version } = require('../package.json')
+
+/**
+ * the projects package.json
+ */
+const { packageJson } = readPkgUp.sync({ cwd: root })
+
+/**
+ * subdirectory containing working copies
+ */
+const REPO_DIR = 'repos'
+
+/**
+ * a map of repos
+ */
+const repos = new Map(Object.entries(packageJson.repos))
 
 /**
  * simple error formating
  */
 const error = error => {
   console.error(chalk.red(`ERROR: ${error.message} Aborting.`))
+}
+
+/**
+ * gather infos (version, revision, etc.) per repos
+ */
+const repositoryInfo = async (remote, local) => {
+  const dir = path.resolve(root, REPO_DIR, local)
+  const { packageJson } = readPkgUp.sync({ cwd: dir })
+  const branch = await igit.currentBranch({ dir })
+
+  const repository = git.open(dir)
+  const { ahead, behind } = repository.getAheadBehindCount()
+  const Status = repository.getStatus()
+  const changes = Object.keys(Status).length
+
+  let state = chalk.blue(local) + `@${packageJson.version} - [${branch}] HEAD`
+
+  if (ahead || behind) {
+    state += chalk.red(` dirty [${ahead}⇡/⇣${behind}]`)
+  } else {
+    state += chalk.green(' clean')
+  }
+
+  if (changes) {
+    state += ' - Working Copy: '
+    state += chalk.red(`${changes} uncommitted local changes`)
+  }
+
+  console.log(state)
 }
 
 /**
@@ -26,9 +82,12 @@ cli
   .action(async repository => {
     try {
       if (repository) {
-        throw Error(`list of ${repository} not yet implemented`)
+        if (!repos.has(repository)) {
+          throw Error(`repository "${repository}" does not exist`)
+        }
+        repositoryInfo(repos.get(repository), repository)
       } else {
-        throw Error(`list of all repositories not yet implemented`)
+        repos.forEach(repositoryInfo)
       }
     } catch (e) {
       error(e)
