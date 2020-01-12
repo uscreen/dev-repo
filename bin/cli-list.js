@@ -10,39 +10,7 @@ const fs = require('fs')
 const igit = require('isomorphic-git')
 igit.plugins.set('fs', fs)
 
-// const { fetchAllUsers, userList, listAllUsers } = require('../src/users')
-
-/**
- * the root directory of the project
- */
-const root = path.resolve(process.cwd())
-
-/**
- * my package.json content
- */
-const { version } = require('../package.json')
-
-/**
- * the projects package.json
- */
-const { packageJson } = readPkgUp.sync({ cwd: root })
-
-/**
- * subdirectory containing working copies
- */
-const REPO_DIR = 'repos'
-
-/**
- * a map of repos
- */
-const repos = new Map(Object.entries(packageJson.repos))
-
-/**
- * simple error formating
- */
-const error = error => {
-  console.error(chalk.red(`ERROR: ${error.message} Aborting.`))
-}
+const { root, version, REPO_DIR, repos, error } = require('../src/utils')
 
 /**
  * gather infos (version, revision, etc.) per repos
@@ -69,7 +37,6 @@ const repositoryInfo = async (remote, local) => {
     state += ' - Working Copy: '
     state += chalk.red(`${changes} uncommitted local changes`)
   }
-
   console.log(state)
 }
 
