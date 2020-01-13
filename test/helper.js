@@ -3,6 +3,9 @@
 const path = require('path')
 const exec = require('child_process').exec
 
+// for easy string testing: disable color output of chalk
+process.env.FORCE_COLOR = 0
+
 module.exports.cli = (args, cwd) => {
   return new Promise(resolve => {
     exec(
