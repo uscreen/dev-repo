@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-const cli = require('commander')
+const { Command } = require('commander')
+const cli = new Command()
 
 /**
  * package.json content
