@@ -10,6 +10,7 @@ stages:
   - audit
 
 before_script:
+  - mkdir ~/.ssh
   - ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 test:
