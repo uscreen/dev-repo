@@ -17,6 +17,8 @@ test:
     - yarn test:ci
     - ls -al test/_fixtures/addrepos/
     - ls -al test/_fixtures/addrepos/repos/
+    - ls -al
+    - git status
   coverage: '/^Statements\s*:\s*([^%]+)/'
 
 audit:
