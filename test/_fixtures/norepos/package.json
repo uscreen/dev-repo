@@ -2,6 +2,6 @@
   "name": "sometest-dev-repo",
   "version": "0.0.0",
   "repos": {
-    "demorepo": "git@gitlab.uscreen.net:uscreen/npm/dev-repo.git"
+    "demorepo": "git@github.com:uscreen/fixture-dev.git"
   }
 }

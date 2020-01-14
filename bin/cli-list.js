@@ -69,6 +69,7 @@ cli
       }
     } catch (e) {
       error(e)
+      process.exit(1)
     }
   })
 
