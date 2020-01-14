@@ -16,6 +16,7 @@ test:
     - yarn install --pure-lockfile --cache-folder .yarn
     - yarn test:ci
     - ls -al test/_fixtures/addrepos/
+    - ls -al test/_fixtures/addrepos/repos/
   coverage: '/^Statements\s*:\s*([^%]+)/'
 
 audit:
