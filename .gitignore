@@ -2,3 +2,6 @@
 .DS_Store
 /.nyc_output
 /coverage
+/test/_fixtures/addrepos/node_modules
+/test/_fixtures/addrepos/repos
+/test/_fixtures/addrepos/yarn.lock
