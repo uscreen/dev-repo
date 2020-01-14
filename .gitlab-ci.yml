@@ -9,6 +9,9 @@ stages:
   - test
   - audit
 
+before_script:
+  - ssh-keyscan github.com >> ~/.ssh/known_hosts
+
 test:
   stage: test
   script:
