@@ -19,6 +19,7 @@ test:
     - ls -al test/_fixtures/addrepos/repos/
     - ls -al
     - git status
+    - tree
   coverage: '/^Statements\s*:\s*([^%]+)/'
 
 audit:
