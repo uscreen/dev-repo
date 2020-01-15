@@ -1,12 +1,12 @@
-const path = require('path')
-const fs = require('fs-extra')
+// const path = require('path')
+// const fs = require('fs-extra')
 const tap = require('tap')
 const { cli, stubGit, cleanupGit } = require('./helper')
 
 tap.test('$ cli install (on empty directory)', async t => {
   stubGit()
   const cwd = './test/_fixtures/addrepos'
-  const demorepo = path.resolve(cwd, 'repos', 'demorepo')
+  // const demorepo = path.resolve(cwd, 'repos', 'demorepo')
   const result = await cli(['install'], cwd)
 
   t.strictEqual(0, result.code, 'Should succeed')
@@ -54,11 +54,11 @@ tap.test('$ cli install (on empty directory)', async t => {
   //   fs.existsSync(path.resolve(demorepo, '.gitignore')),
   //   "Should contain '.gitignore'"
   // )
-  t.strictEqual(
-    true,
-    fs.existsSync(path.resolve(demorepo, 'one')),
-    "Should contain 'one'"
-  )
+  // t.strictEqual(
+  //   true,
+  //   fs.existsSync(path.resolve(demorepo, 'one')),
+  //   "Should contain 'one'"
+  // )
   // t.strictEqual(
   //   true,
   //   fs.existsSync(path.resolve(demorepo, 'package.json')),
