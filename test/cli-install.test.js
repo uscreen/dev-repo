@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs-extra')
 const tap = require('tap')
-const { cli, stubGit, cleanupGit } = require('./helper')
+const { cli, stubGit, cleanupGit, wait } = require('./helper')
 
 tap.test('$ cli install (on empty directory)', async t => {
   stubGit()
@@ -40,6 +40,9 @@ tap.test('$ cli install (on empty directory)', async t => {
     result.stdout.includes('[1/4] Resolving packages'),
     'Should print [1/4] Resolving packages'
   )
+
+  // slow filesystem?
+  await wait(200)
 
   t.strictEqual(
     true,

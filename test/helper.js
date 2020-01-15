@@ -33,3 +33,5 @@ module.exports.cleanupGit = () => {
   fs.removeSync(path.resolve(__dirname, './_stubs/demorepo/.git'))
   fs.removeSync(path.resolve(__dirname, './_fixtures/addrepos/repos'))
 }
+
+module.exports.wait = ms => new Promise(resolve => setTimeout(resolve, ms))
