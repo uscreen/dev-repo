@@ -1,10 +1,14 @@
+const path = require('path')
+const fs = require('fs-extra')
 const tap = require('tap')
 const { cli, stubGit, cleanupGit } = require('./helper')
 
 tap.test('$ cli install (on empty directory)', async t => {
   stubGit()
+  const cwd = './test/_fixtures/addrepos'
+  const demorepo = path.resolve(cwd, 'repos', 'demorepo')
+  const result = await cli(['install'], cwd)
 
-  const result = await cli(['install'], './test/_fixtures/addrepos')
   t.strictEqual(0, result.code, 'Should succeed')
 
   t.strictEqual(
@@ -37,8 +41,49 @@ tap.test('$ cli install (on empty directory)', async t => {
     'Should print [1/4] Resolving packages'
   )
 
+  t.strictEqual(
+    true,
+    fs.existsSync(path.resolve(demorepo, '.git')),
+    "Should contain '.git'"
+  )
+  t.strictEqual(
+    true,
+    fs.existsSync(path.resolve(demorepo, '.gitignore')),
+    "Should contain '.gitignore'"
+  )
+  t.strictEqual(
+    true,
+    fs.existsSync(path.resolve(demorepo, 'one')),
+    "Should contain 'one'"
+  )
+  t.strictEqual(
+    true,
+    fs.existsSync(path.resolve(demorepo, 'package.json')),
+    "Should contain 'package.json'"
+  )
+  t.strictEqual(
+    true,
+    fs.existsSync(path.resolve(demorepo, 'two')),
+    "Should contain 'two'"
+  )
+  t.strictEqual(
+    true,
+    fs.existsSync(path.resolve(demorepo, 'yarn.lock')),
+    "Should contain 'yarn.lock'"
+  )
+  t.strictEqual(
+    true,
+    fs.existsSync(path.resolve(demorepo, 'node_modules')),
+    "Should contain 'node_modules'"
+  )
+  t.strictEqual(
+    true,
+    fs.existsSync(path.resolve(demorepo, 'node_modules', 'debug')),
+    "Should contain 'node_modules/debug'"
+  )
+
   // another run should not clone but install
-  const result2 = await cli(['install'], './test/_fixtures/addrepos')
+  const result2 = await cli(['install'], cwd)
   t.strictEqual(0, result2.code, 'Another run should succeed')
 
   t.strictEqual(
