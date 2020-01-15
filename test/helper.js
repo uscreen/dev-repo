@@ -1,7 +1,7 @@
 'use strict'
 
 const path = require('path')
-const exec = require('child_process').exec
+const { exec, execSync } = require('child_process')
 const fs = require('fs-extra')
 
 // for easy string testing: disable color output of chalk
@@ -26,7 +26,7 @@ module.exports.cli = (args, cwd) => {
 
 module.exports.stubGit = () => {
   const cwd = path.resolve(__dirname, './_stubs/demorepo')
-  exec('git init; git add .; git commit -m "init"', { cwd })
+  execSync('git init; git add .; git commit -m "init"', { cwd })
 }
 
 module.exports.cleanupGit = () => {

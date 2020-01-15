@@ -3,6 +3,7 @@
 const cli = require('commander')
 const chalk = require('chalk')
 const path = require('path')
+// const execSync = require('child_process').execSync
 const readPkgUp = require('read-pkg-up')
 const git = require('git-utils')
 
@@ -29,7 +30,7 @@ const repositoryInfo = async (remote, local) => {
 
   const dir = path.resolve(root, REPO_DIR, local)
   const { packageJson } = readPkgUp.sync({ cwd: dir })
-
+  // execSync('git fetch', { cwd: dir }) // slows down a lot
   const branch = await igit.currentBranch({ dir })
   const repository = git.open(dir)
   const { ahead, behind } = repository.getAheadBehindCount()
