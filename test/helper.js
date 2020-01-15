@@ -25,12 +25,14 @@ module.exports.cli = (args, cwd) => {
 }
 
 module.exports.stubGit = () => {
-  const src = path.resolve(__dirname, './_stubs/demorepo/git')
-  const dest = path.resolve(__dirname, './_stubs/demorepo/.git')
-  fs.copySync(src, dest)
+  const cwd = path.resolve(__dirname, './_stubs/demorepo')
+  exec('git init; git add .; git commit -m "init"', { cwd })
+  // const src = path.resolve(__dirname, './_stubs/demorepo/git')
+  // const dest = path.resolve(__dirname, './_stubs/demorepo/.git')
+  // fs.copySync(src, dest)
 }
 
 module.exports.cleanupGit = () => {
-  // fs.removeSync(path.resolve(__dirname, './_stubs/demorepo/.git'))
-  // fs.removeSync(path.resolve(__dirname, './_fixtures/addrepos/repos'))
+  fs.removeSync(path.resolve(__dirname, './_stubs/demorepo/.git'))
+  fs.removeSync(path.resolve(__dirname, './_fixtures/addrepos/repos'))
 }
