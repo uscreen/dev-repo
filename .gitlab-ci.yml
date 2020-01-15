@@ -9,23 +9,12 @@ stages:
   - test
   - audit
 
-before_script:
-  - mkdir ~/.ssh
-  - ssh-keyscan github.com >> ~/.ssh/known_hosts
-
 test:
   stage: test
   script:
-    # - ls -al test/_fixtures/addrepos/
-    # - yarn install --pure-lockfile --cache-folder .yarn
-    # - yarn test:ci
-    # - ls -al test/_fixtures/addrepos/
-    # - ls -al test/_fixtures/addrepos/repos/
-    - ls -al
-    - git clone git@github.com:uscreen/fixture-dev.git
-    - ls -al
-    - ls -al fixture-dev
-  # coverage: '/^Statements\s*:\s*([^%]+)/'
+    - yarn install --pure-lockfile --cache-folder .yarn
+    - yarn test:ci
+  coverage: '/^Statements\s*:\s*([^%]+)/'
 
 audit:
   stage: audit
