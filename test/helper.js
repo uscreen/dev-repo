@@ -2,6 +2,7 @@
 
 const path = require('path')
 const exec = require('child_process').exec
+const fs = require('fs-extra')
 
 // for easy string testing: disable color output of chalk
 process.env.FORCE_COLOR = 0
@@ -21,4 +22,15 @@ module.exports.cli = (args, cwd) => {
       }
     )
   })
+}
+
+module.exports.stubGit = () => {
+  const src = path.resolve(__dirname, './_stubs/demorepo/git')
+  const dest = path.resolve(__dirname, './_stubs/demorepo/.git')
+  fs.copySync(src, dest)
+}
+
+module.exports.cleanupGit = () => {
+  fs.removeSync(path.resolve(__dirname, './_stubs/demorepo/.git'))
+  fs.removeSync(path.resolve(__dirname, './_fixtures/addrepos/repos'))
 }
