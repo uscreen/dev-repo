@@ -1,0 +1,10 @@
+{
+  "name": "demorepo",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": "Marcus Spiegel <spiegel@uscreen.de>",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^4.1.1"
+  }
+}
