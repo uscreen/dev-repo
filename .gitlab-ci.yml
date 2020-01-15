@@ -14,10 +14,6 @@ test:
   script:
     - yarn install --pure-lockfile --cache-folder .yarn
     - yarn test:ci
-    - ls -al test/_stubs/demorepo
-    - mkdir -p test/_fixtures/addrepos/repos/demorepo/
-    - git clone  test/_stubs/demorepo test/_fixtures/addrepos/repos/demorepo/
-    - ls -al test/_fixtures/addrepos/repos/demorepo/
   coverage: '/^Statements\s*:\s*([^%]+)/'
 
 audit:
