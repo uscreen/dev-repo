@@ -31,6 +31,6 @@ module.exports.stubGit = () => {
 }
 
 module.exports.cleanupGit = () => {
-  fs.removeSync(path.resolve(__dirname, './_stubs/demorepo/.git'))
+  // fs.removeSync(path.resolve(__dirname, './_stubs/demorepo/.git'))
   // fs.removeSync(path.resolve(__dirname, './_fixtures/addrepos/repos'))
 }
