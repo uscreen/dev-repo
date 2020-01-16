@@ -4,32 +4,22 @@ const cli = require('commander')
 const chalk = require('chalk')
 const path = require('path')
 const fs = require('fs-extra')
-const { spawn } = require('child_process')
 
 const {
-  version,
-  repos,
-  REPO_DIR,
+  absoluteRepoPath,
   error,
-  isRepoDirectory,
   isGitRepo,
-  absoluteRepoPath
+  isRepoDirectory,
+  REPO_DIR,
+  repos,
+  run,
+  version
 } = require('../src/utils')
 
 /**
  * init new yarn project
  */
-const yarnInstall = path =>
-  new Promise((resolve, reject) => {
-    const yarn = spawn('yarn', ['install'], {
-      cwd: path,
-      stdio: [0, 1, 2]
-    })
-    yarn.on('close', code => {
-      if (code === 0) return resolve(code)
-      reject(code)
-    })
-  })
+const yarnInstall = path => run('yarn', ['install'], path)
 
 /**
  * mkdir & git clone
@@ -46,15 +36,7 @@ const repositoryInstall = async (remote, local) => {
 
   if (!isGitRepo(local)) {
     console.log(chalk.green('git clone'), remote, path.join(REPO_DIR, local))
-    await new Promise((resolve, reject) => {
-      const git = spawn('git', ['clone', remote, path.join(REPO_DIR, local)])
-      git.stdout.on('data', data => process.stdout.write(data))
-      git.stderr.on('data', data => process.stderr.write(data))
-      git.on('close', code => {
-        if (code === 0) return resolve(code)
-        reject(code)
-      })
-    })
+    await run('git', ['clone', remote, path.join(REPO_DIR, local)])
   }
 
   await yarnInstall(dir)

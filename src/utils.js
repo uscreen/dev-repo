@@ -4,6 +4,7 @@ const chalk = require('chalk')
 const path = require('path')
 const fs = require('fs')
 const readPkgUp = require('read-pkg-up')
+const { spawn } = require('child_process')
 
 /**
  * the root directory of the project
@@ -70,3 +71,18 @@ module.exports.isGitRepo = local => {
   }
   return true
 }
+
+/**
+ * spawns a child process and returns a promise
+ */
+module.exports.run = (command, parameters = [], cwd = null) =>
+  new Promise((resolve, reject) => {
+    const c = spawn(command, parameters, {
+      cwd,
+      stdio: [0, 1, 2]
+    })
+    c.on('close', code => {
+      if (code === 0) return resolve(code)
+      reject(code)
+    })
+  })
