@@ -17,14 +17,9 @@ const {
 } = require('../src/utils')
 
 /**
- * init new yarn project
+ * creates local target directory if missing
  */
-const yarnInstall = path => run('yarn', ['install'], path)
-
-/**
- * mkdir & git clone
- */
-const repositoryInstall = async (remote, local) => {
+const ensureLocalDir = local => {
   const dir = absoluteRepoPath(local)
   if (!isRepoDirectory(local)) {
     console.log(
@@ -33,13 +28,33 @@ const repositoryInstall = async (remote, local) => {
     )
     fs.ensureDirSync(dir)
   }
+}
 
+/**
+ * clones remote respository into local working directory
+ */
+const ensureGitClone = async (remote, local) => {
   if (!isGitRepo(local)) {
     console.log(chalk.green('git clone'), remote, path.join(REPO_DIR, local))
     await run('git', ['clone', remote, path.join(REPO_DIR, local)])
   }
+}
 
-  await yarnInstall(dir)
+/**
+ * init new yarn project
+ */
+const yarnInstall = local => {
+  const dir = absoluteRepoPath(local)
+  return run('yarn', ['install'], dir)
+}
+
+/**
+ * mkdir & git clone & yarn install
+ */
+const repositoryInstall = async (remote, local) => {
+  ensureLocalDir(local)
+  await ensureGitClone(remote, local)
+  await yarnInstall(local)
 }
 
 /**
