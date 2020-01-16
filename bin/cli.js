@@ -18,7 +18,7 @@ cli
     'install named repository (ie. "webapi"), or all if no name supplied'
   )
   .command(
-    'list [repository]',
+    'list [repository] [-f|--fetch]',
     'list named repository (ie. "webapi"), or all if no name supplied'
   )
 

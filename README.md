@@ -56,7 +56,7 @@ Commands:
 
 Install given repository or all. This will create any missing subdirectory, `git clone` missing repositories and run a `yarn install` for each repository. Subsequent calls of `repo install` will at least run a `yarn install` each time. Those will run in parallel.
 
-### $ repo list [repository]
+### $ repo list [repository] [-f|--fetch]
 
 Lists local information about a given repository or all.
 
@@ -93,6 +93,17 @@ client@0.1.0 - [master] HEAD clean
 api@0.4.0 - [master] HEAD clean - Working Copy: 1 uncommitted local changes
 website@0.3.0 - [stable] HEAD clean
 
+$ repo list -f
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 2 (delta 1), reused 1 (delta 1)
+Unpacking objects: 100% (2/2), done.
+From gitlab.uscreen.net:example/api
+   b578056..d7b07cd  master     -> origin/master
+website@0.3.0 - [master] HEAD clean
+api@0.4.0 - [master] HEAD dirty [0⇡/⇣1]
+client@0.1.0 - [master] HEAD clean
+
 ```
 ---
 
@@ -100,7 +111,7 @@ website@0.3.0 - [stable] HEAD clean
 
 - need to find better git module (native, isomorph, utils)
 - add unit tests for edge cases
-- add another optional flag to also `git fetch` befores list
+- add integration test for `repo list --fetch`
 
 ## Changelog
 
@@ -110,7 +121,8 @@ website@0.3.0 - [stable] HEAD clean
 
 - `repo install` command to install from git & npm
 - `repo list` command to give some status info
-- integration tests covering most (all?) use cases
+- integration tests covering most (not all) use cases
+- another optional flag to also `git fetch` befores list
 
 ### v0.0.0
 
