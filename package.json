@@ -6,7 +6,8 @@
   "bin": {
     "repo": "./bin/cli.js",
     "repo-list": "./bin/cli-list.js",
-    "repo-install": "./bin/cli-install.js"
+    "repo-install": "./bin/cli-install.js",
+    "repo-run": "./bin/cli-run.js"
   },
   "repository": "git@gitlab.uscreen.net:uscreen/npm/dev-repo.git",
   "author": "Marcus Spiegel <spiegel@uscreen.de>",

@@ -45,9 +45,11 @@ Options:
   -h, --help            output usage information
 
 Commands:
-  install [repository]  install named repository (ie. "webapi"), or all if no name supplied
-  list [repository]     list named repository (ie. "webapi"), or all if no name supplied
-  help [cmd]            display help for [cmd]
+  install [repository]            install named repository (ie. "webapi"), or all if no name supplied
+  list [repository] [-f|--fetch]  list named repository (ie. "webapi"), or all if no name supplied
+  pull [repository]               pull named repository (ie. "webapi"), or all if no name supplied
+  run <command> [repository]      run command within named repository (ie. "webapi"), or all if no name supplied
+  help [cmd]                      display help for [cmd]
 ```
 
 ## Api
@@ -55,6 +57,40 @@ Commands:
 ### $ repo install [repository]
 
 Install given repository or all. This will create any missing subdirectory, `git clone` missing repositories and run a `yarn install` for each repository. Subsequent calls of `repo install` will at least run a `yarn install` each time. Those will run in parallel.
+
+### $ repo pull [repository]
+
+Pull one given repository from remote or all repositories. Those pulls will run in parallel.
+
+### $ repo run \<command\> [repository]
+
+Run given command within given repository or all available repositories.
+Example with three repoos:
+
+```bash
+$ repo run "git pull"
+Already up to date.
+Already up to date.
+Already up to date.
+```
+
+Example with a given repository:
+
+```bash
+$ repo run "git status" webapi
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+```
+
+By now commands will run in parallel, so don't expect a proper sequences output. `run` inherits the current users shell from env to enable aliases etc. by default. For example this could open editors for all projects:
+
+```bash
+$ repo run "v"
+```
+
+(assuming an alias like `alias v 'code .'`)
 
 ### $ repo list [repository] [-f|--fetch]
 
@@ -111,9 +147,16 @@ client@0.1.0 - [master] HEAD clean
 
 - need to find better git module (native, isomorph, utils)
 - add unit tests for edge cases
-- add integration test for `repo list --fetch`
+- add tests for v0.2.0
 
 ## Changelog
+
+### v0.2.0
+
+#### Added
+
+- `repo pull` command to pull one or all repositories from remote
+- `repo run` command to run sub-commands within repositories
 
 ### v0.1.0
 
@@ -122,7 +165,7 @@ client@0.1.0 - [master] HEAD clean
 - `repo install` command to install from git & npm
 - `repo list` command to give some status info
 - integration tests covering most (not all) use cases
-- another optional flag to also `git fetch` befores list
+- added integration test for `repo list --fetch` to also `git fetch` befores list
 
 ### v0.0.0
 

@@ -79,7 +79,8 @@ module.exports.run = (command, parameters = [], cwd = null) =>
   new Promise((resolve, reject) => {
     const c = spawn(command, parameters, {
       cwd,
-      stdio: [0, 1, 2]
+      stdio: [0, 1, 2],
+      shell: process.env.SHELL
     })
     c.on('close', code => {
       if (code === 0) return resolve(code)

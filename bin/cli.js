@@ -21,6 +21,14 @@ cli
     'list [repository] [-f|--fetch]',
     'list named repository (ie. "webapi"), or all if no name supplied'
   )
+  .command(
+    'pull [repository]',
+    'pull named repository (ie. "webapi"), or all if no name supplied'
+  )
+  .command(
+    'run <command> [repository]',
+    'run command within named repository (ie. "webapi"), or all if no name supplied'
+  )
 
 /**
  * read args
