@@ -1,13 +1,14 @@
 {
   "name": "@uscreen.de/dev-repo",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "cli to manage dev repos",
   "main": "index.js",
   "bin": {
     "repo": "./bin/cli.js",
     "repo-list": "./bin/cli-list.js",
     "repo-install": "./bin/cli-install.js",
-    "repo-run": "./bin/cli-run.js"
+    "repo-run": "./bin/cli-run.js",
+    "repo-pull": "./bin/cli-pull.js"
   },
   "repository": "git@gitlab.uscreen.net:uscreen/npm/dev-repo.git",
   "author": "Marcus Spiegel <spiegel@uscreen.de>",
