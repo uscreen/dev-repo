@@ -33,7 +33,7 @@ module.exports.REPO_DIR = REPO_DIR
 /**
  * a map of repos
  */
-module.exports.repos = new Map(Object.entries(packageJson.repos))
+module.exports.repos = new Map(Object.entries(packageJson.repos || {}))
 
 /**
  * simple error formating
