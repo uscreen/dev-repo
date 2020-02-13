@@ -30,6 +30,11 @@ const ensureLocalDir = local => {
   }
 }
 
+const ensureRepoDir = () => {
+  fs.ensureDirSync(REPO_DIR)
+  fs.writeFileSync(path.resolve(REPO_DIR, '.gitignore'), '*', 'utf8')
+}
+
 /**
  * clones remote respository into local working directory
  */
@@ -65,6 +70,8 @@ cli
   .arguments('[repository]')
   .action(async repository => {
     try {
+      ensureRepoDir()
+
       if (repository) {
         if (!repos.has(repository)) {
           throw Error(`repository "${repository}" does not exist`)
