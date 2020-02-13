@@ -35,7 +35,7 @@ const ensureRepoDir = () => {
 
   const ignorePath = path.resolve(REPO_DIR, '.gitignore')
   if (!fs.existsSync(ignorePath)) {
-    fs.writeFileSync(ignorePath, '*', 'utf8')
+    fs.writeFileSync(ignorePath, '*\n!.gitignore', 'utf8')
   }
 }
 
