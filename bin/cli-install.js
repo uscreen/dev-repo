@@ -32,7 +32,11 @@ const ensureLocalDir = local => {
 
 const ensureRepoDir = () => {
   fs.ensureDirSync(REPO_DIR)
-  fs.writeFileSync(path.resolve(REPO_DIR, '.gitignore'), '*', 'utf8')
+
+  const ignorePath = path.resolve(REPO_DIR, '.gitignore')
+  if (!fs.existsSync(ignorePath)) {
+    fs.writeFileSync(ignorePath, '*', 'utf8')
+  }
 }
 
 /**
