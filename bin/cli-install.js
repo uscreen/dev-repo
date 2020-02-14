@@ -30,12 +30,15 @@ const ensureLocalDir = local => {
   }
 }
 
-const ensureRepoDir = () => {
-  fs.ensureDirSync(REPO_DIR)
-
+/**
+ * create .gitignore if not exists
+ */
+const ensureGitIgnore = async () => {
   const ignorePath = path.resolve(REPO_DIR, '.gitignore')
-  if (!fs.existsSync(ignorePath)) {
-    fs.writeFileSync(ignorePath, '*\n!.gitignore', 'utf8')
+  try {
+    await fs.outputFile(ignorePath, '*\n!.gitignore', { flag: 'wx' })
+  } catch (e) {
+    console.log(`skip creating ${ignorePath} as it might be existing`, e)
   }
 }
 
@@ -74,7 +77,7 @@ cli
   .arguments('[repository]')
   .action(async repository => {
     try {
-      ensureRepoDir()
+      ensureGitIgnore()
 
       if (repository) {
         if (!repos.has(repository)) {
