@@ -31,6 +31,18 @@ const ensureLocalDir = local => {
 }
 
 /**
+ * create .gitignore if not exists
+ */
+const ensureGitIgnore = async () => {
+  const ignorePath = path.resolve(REPO_DIR, '.gitignore')
+  try {
+    await fs.outputFile(ignorePath, '*\n!.gitignore', { flag: 'wx' })
+  } catch (e) {
+    console.log(`skip creating ${ignorePath} as it might be existing`, e)
+  }
+}
+
+/**
  * clones remote respository into local working directory
  */
 const ensureGitClone = async (remote, local) => {
@@ -65,6 +77,8 @@ cli
   .arguments('[repository]')
   .action(async repository => {
     try {
+      ensureGitIgnore()
+
       if (repository) {
         if (!repos.has(repository)) {
           throw Error(`repository "${repository}" does not exist`)

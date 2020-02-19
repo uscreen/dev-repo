@@ -1,11 +1,12 @@
-// const path = require('path')
-// const fs = require('fs-extra')
+const path = require('path')
+const fs = require('fs-extra')
 const tap = require('tap')
 const { cli, stubGit, cleanupGit } = require('./helper')
 
 tap.test('$ cli install (on empty directory)', async t => {
   stubGit()
   const cwd = './test/_fixtures/addrepos'
+  const reposDir = path.resolve(cwd, 'repos')
   // const demorepo = path.resolve(cwd, 'repos', 'demorepo')
   const result = await cli(['install'], cwd)
 
@@ -39,6 +40,18 @@ tap.test('$ cli install (on empty directory)', async t => {
     true,
     result.stdout.includes('[1/4] Resolving packages'),
     'Should print [1/4] Resolving packages'
+  )
+
+  t.strictEqual(
+    true,
+    fs.existsSync(path.resolve(reposDir, '.gitignore')),
+    'Should create .gitignore file'
+  )
+
+  t.strictEqual(
+    '*\n!.gitignore',
+    fs.readFileSync(path.resolve(reposDir, '.gitignore'), 'utf8'),
+    '.gitignore should ignore all file except itself'
   )
 
   // slow filesystem?
@@ -86,6 +99,8 @@ tap.test('$ cli install (on empty directory)', async t => {
   // )
 
   // another run should not clone but install
+  fs.writeFileSync(path.resolve(reposDir, '.gitignore'), '!demorepo', 'utf8')
+
   const result2 = await cli(['install'], cwd)
   t.strictEqual(0, result2.code, 'Another run should succeed')
 
@@ -123,6 +138,12 @@ tap.test('$ cli install (on empty directory)', async t => {
     true,
     result2.stdout.includes('success Already up-to-date'),
     'Another run should print yarns success Already up-to-date information'
+  )
+
+  t.strictEqual(
+    '!demorepo',
+    fs.readFileSync(path.resolve(reposDir, '.gitignore'), 'utf8'),
+    '.gitignore should not be overwritten'
   )
 
   cleanupGit()
