@@ -19,9 +19,9 @@ To combine mutliple repositories into one single development repository you just
 
 ```json
 "repos": {
-  "client": "git@gitlab.uscreen.net:example/client.git",
-  "api": "git@gitlab.uscreen.net:example/api.git",
-  "website": "git@gitlab.uscreen.net:example/website.git"
+  "client": "git@github.com:example/client.git",
+  "api": "git@github.com:example/api.git",
+  "website": "git@github.com:example/website.git"
 }
 ```
 
@@ -137,7 +137,7 @@ remote: Enumerating objects: 1, done.
 remote: Counting objects: 100% (1/1), done.
 remote: Total 2 (delta 1), reused 1 (delta 1)
 Unpacking objects: 100% (2/2), done.
-From gitlab.uscreen.net:example/api
+From github.com:example/api
    b578056..d7b07cd  master     -> origin/master
 website@0.3.0 - [master] HEAD clean
 api@0.4.0 - [master] HEAD dirty [0⇡/⇣1]
