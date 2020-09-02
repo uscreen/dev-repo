@@ -1,6 +1,6 @@
 # dev-repo
 
-![Travis (.com)](https://img.shields.io/travis/com/uscreen/dev-repo)
+[![Build Status](https://travis-ci.com/uscreen/dev-repo.svg?branch=master)](https://travis-ci.com/uscreen/dev-repo)
 [![Known Vulnerabilities](https://snyk.io/test/github/uscreen/dev-repo/badge.svg?targetFile=package.json)](https://snyk.io/test/github/uscreen/dev-repo?targetFile=package.json)
 
 > Manage a group of repositories for local development
