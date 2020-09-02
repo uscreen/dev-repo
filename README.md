@@ -154,6 +154,13 @@ client@0.1.0 - [master] HEAD clean
 
 ## Changelog
 
+### v0.3.0
+
+#### Added
+
+- travis ci integration
+- snyk audit integration
+
 ### v0.2.0
 
 #### Added
