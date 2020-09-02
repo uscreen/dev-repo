@@ -1,6 +1,6 @@
 {
   "name": "@uscreen.de/dev-repo",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "cli to manage dev repos",
   "main": "index.js",
   "bin": {
@@ -50,9 +50,9 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "lint-staged": "^10.0.7",
+    "lint-staged": "^10.2.13",
     "prettier": "^1.18.2",
-    "tap": "^14.10.5",
+    "tap": "^14.10.8",
     "yorkie": "^2.0.0"
   }
 }
