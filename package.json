@@ -1,6 +1,6 @@
 {
   "name": "@uscreen.de/dev-repo",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "cli to manage dev repos",
   "main": "index.js",
   "bin": {
@@ -20,6 +20,10 @@
     "test:cov": "tap --coverage-report=html test/**/*.test.js",
     "test:ci": "tap --coverage-report=text-summary test/**/*.test.js"
   },
+  "files": [
+    "bin/",
+    "src/"
+  ],
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
