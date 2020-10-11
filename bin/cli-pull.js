@@ -15,8 +15,9 @@ const pull = async (remote, local) => {
  */
 cli
   .version(version)
-  .arguments('<command> [repository]')
-  .action(async (command, repository) => {
+  .arguments('[repository]')
+  .action(async repository => {
+    console.log('pulling')
     try {
       if (repository) {
         if (!repos.has(repository)) {
