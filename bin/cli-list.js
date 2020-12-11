@@ -4,7 +4,6 @@ const cli = require('commander')
 const chalk = require('chalk')
 const path = require('path')
 const readPkgUp = require('read-pkg-up')
-const git = require('git-utils')
 const igit = require('isomorphic-git')
 
 const {
@@ -32,10 +31,13 @@ const repositoryInfo = async (remote, local) => {
     await run('git', ['fetch'], dir) // slows down a bit
   }
   const branch = await igit.currentBranch({ dir })
-  const repository = git.open(dir)
-  const { ahead, behind } = repository.getAheadBehindCount()
-  const Status = repository.getStatus()
-  const changes = Object.keys(Status).length
+  // const repository = git.open(dir)
+  // const { ahead, behind } = repository.getAheadBehindCount()
+  // const Status = repository.getStatus()
+  // const changes = Object.keys(Status).length
+
+  const { ahead, behind } = { ahead: 0, behind: 0 }
+  const changes = 0
 
   let state = chalk.blue(local) + `@${packageJson.version} - [${branch}] HEAD`
 
