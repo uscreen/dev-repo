@@ -3,7 +3,7 @@ const fs = require('fs-extra')
 const tap = require('tap')
 const { cli, stubGit, cleanupGit } = require('./helper')
 
-tap.test('$ cli install (on empty directory)', async t => {
+tap.test('$ cli install (on empty directory)', async (t) => {
   stubGit()
   const cwd = './test/_fixtures/addrepos'
   const reposDir = path.resolve(cwd, 'repos')

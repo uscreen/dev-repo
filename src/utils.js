@@ -38,20 +38,20 @@ module.exports.repos = new Map(Object.entries(packageJson.repos || {}))
 /**
  * simple error formating
  */
-module.exports.error = error => {
+module.exports.error = (error) => {
   console.error(chalk.red(`ERROR: ${error.message} Aborting.`))
 }
 
 /**
  * get the absolute path to local repos directory
  */
-const absoluteRepoPath = local => path.resolve(root, REPO_DIR, local)
+const absoluteRepoPath = (local) => path.resolve(root, REPO_DIR, local)
 module.exports.absoluteRepoPath = absoluteRepoPath
 
 /**
  * check to be an existing directory within repos path
  */
-module.exports.isRepoDirectory = local => {
+module.exports.isRepoDirectory = (local) => {
   const dir = absoluteRepoPath(local)
   if (!fs.existsSync(dir)) {
     console.log(chalk.blue(local), '- missing:', chalk.red('no directory'))
@@ -63,7 +63,7 @@ module.exports.isRepoDirectory = local => {
 /**
  * check to be a git repos within repos path
  */
-module.exports.isGitRepo = local => {
+module.exports.isGitRepo = (local) => {
   const dir = absoluteRepoPath(local)
   if (!fs.existsSync(path.resolve(dir, '.git'))) {
     console.log(chalk.blue(local), '- missing:', chalk.red('no repository'))
@@ -82,7 +82,7 @@ module.exports.run = (command, parameters = [], cwd = null) =>
       stdio: [0, 1, 2],
       shell: process.env.SHELL
     })
-    c.on('close', code => {
+    c.on('close', (code) => {
       if (code === 0) return resolve(code)
       reject(code)
     })

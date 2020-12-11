@@ -1,7 +1,7 @@
 const tap = require('tap')
 const { cli } = require('./helper')
 
-tap.test('$ cli list (on empty directory)', async t => {
+tap.test('$ cli list (on empty directory)', async (t) => {
   const result = await cli(['list'], './test/_fixtures/empty')
   t.strictEqual(0, result.code, 'Should succeed')
   t.strictEqual(
@@ -12,7 +12,7 @@ tap.test('$ cli list (on empty directory)', async t => {
   t.end()
 })
 
-tap.test('$ cli list (with missing checkout)', async t => {
+tap.test('$ cli list (with missing checkout)', async (t) => {
   const result = await cli(['list'], './test/_fixtures/norepos')
   t.strictEqual(0, result.code, 'Should succeed')
   t.strictEqual(
@@ -25,7 +25,7 @@ tap.test('$ cli list (with missing checkout)', async t => {
 
 tap.test(
   '$ cli list (with missing checkout and explicit parameter)',
-  async t => {
+  async (t) => {
     const result = await cli(['list', 'demorepo'], './test/_fixtures/norepos')
     t.strictEqual(0, result.code, 'Should succeed')
     t.strictEqual(
@@ -39,7 +39,7 @@ tap.test(
 
 tap.test(
   '$ cli list (with missing checkout and explicit wrong parameter)',
-  async t => {
+  async (t) => {
     const result = await cli(['list', 'norepo'], './test/_fixtures/norepos')
     t.strictEqual(1, result.code, 'Should not succeed')
     t.strictEqual(

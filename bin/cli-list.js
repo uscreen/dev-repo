@@ -62,7 +62,7 @@ cli
   .version(version)
   .arguments('[repository]')
   .option('-f, --fetch', 'do a git fetch before check status')
-  .action(async repository => {
+  .action(async (repository) => {
     try {
       if (repository) {
         if (!repos.has(repository)) {

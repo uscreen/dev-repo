@@ -19,7 +19,7 @@ const {
 /**
  * creates local target directory if missing
  */
-const ensureLocalDir = local => {
+const ensureLocalDir = (local) => {
   const dir = absoluteRepoPath(local)
   if (!isRepoDirectory(local)) {
     console.log(
@@ -55,7 +55,7 @@ const ensureGitClone = async (remote, local) => {
 /**
  * init new yarn project
  */
-const yarnInstall = local => {
+const yarnInstall = (local) => {
   const dir = absoluteRepoPath(local)
   return run('yarn', ['install'], dir)
 }
@@ -75,7 +75,7 @@ const repositoryInstall = async (remote, local) => {
 cli
   .version(version)
   .arguments('[repository]')
-  .action(async repository => {
+  .action(async (repository) => {
     try {
       ensureGitIgnore()
 

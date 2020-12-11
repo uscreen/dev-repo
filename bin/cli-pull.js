@@ -16,7 +16,7 @@ const pull = async (remote, local) => {
 cli
   .version(version)
   .arguments('[repository]')
-  .action(async repository => {
+  .action(async (repository) => {
     console.log('pulling')
     try {
       if (repository) {

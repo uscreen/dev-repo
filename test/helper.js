@@ -8,7 +8,7 @@ const fs = require('fs-extra')
 process.env.FORCE_COLOR = 0
 
 module.exports.cli = (args, cwd) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     exec(
       `node ${path.resolve(__dirname, '../bin/cli.js')} ${args.join(' ')}`,
       { cwd },
@@ -34,4 +34,4 @@ module.exports.cleanupGit = () => {
   fs.removeSync(path.resolve(__dirname, './_fixtures/addrepos/repos'))
 }
 
-module.exports.wait = ms => new Promise(resolve => setTimeout(resolve, ms))
+module.exports.wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
