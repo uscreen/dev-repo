@@ -5,10 +5,7 @@ const chalk = require('chalk')
 const path = require('path')
 const readPkgUp = require('read-pkg-up')
 const git = require('git-utils')
-
-const fs = require('fs')
 const igit = require('isomorphic-git')
-igit.plugins.set('fs', fs)
 
 const {
   root,
