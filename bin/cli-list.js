@@ -4,7 +4,6 @@ const cli = require('commander')
 const chalk = require('chalk')
 const path = require('path')
 const readPkgUp = require('read-pkg-up')
-const igit = require('isomorphic-git')
 
 const {
   root,
@@ -14,6 +13,7 @@ const {
   error,
   isRepoDirectory,
   isGitRepo,
+  gitStatus,
   run
 } = require('../src/utils')
 
@@ -30,18 +30,13 @@ const repositoryInfo = async (remote, local) => {
   if (cli.fetch) {
     await run('git', ['fetch'], dir) // slows down a bit
   }
-  const branch = await igit.currentBranch({ dir })
-  // const repository = git.open(dir)
-  // const { ahead, behind } = repository.getAheadBehindCount()
-  // const Status = repository.getStatus()
-  // const changes = Object.keys(Status).length
+  // const branch = await igit.currentBranch({ dir, fs })
 
-  const { ahead, behind } = { ahead: 0, behind: 0 }
-  const changes = 0
+  const { branch, ahead, behind, changes } = gitStatus(dir)
 
   let state = chalk.blue(local) + `@${packageJson.version} - [${branch}] HEAD`
 
-  if (ahead || behind) {
+  if (ahead > 0 || behind > 0) {
     state += chalk.red(` dirty [${ahead}⇡/⇣${behind}]`)
   } else {
     state += chalk.green(' clean')

@@ -35,8 +35,8 @@
   },
   "dependencies": {
     "commander": "^6.2.0",
+    "execa": "^5.0.0",
     "fs-extra": "^9.0.1",
-    "isomorphic-git": "^1.8.0",
     "read-pkg-up": "^7.0.0",
     "write-pkg": "^4.0.0"
   },

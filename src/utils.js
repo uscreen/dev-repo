@@ -3,6 +3,7 @@
 const chalk = require('chalk')
 const path = require('path')
 const fs = require('fs')
+const execa = require('execa')
 const readPkgUp = require('read-pkg-up')
 const { spawn } = require('child_process')
 
@@ -70,6 +71,32 @@ module.exports.isGitRepo = (local) => {
     return false
   }
   return true
+}
+
+/**
+ * a git status returning { branch, changes, behind, ahead }
+ * as object
+ */
+module.exports.gitStatus = (dir) => {
+  const { stdout } = execa.commandSync('git status -s -b', {
+    cwd: dir,
+    shell: process.env.SHELL
+  })
+
+  const lines = stdout.split(/\r\n|\r|\n/)
+  const changes = lines.length - 1
+  const firstLine = lines[0]
+
+  const br = firstLine.match(/##\s+(\w+)/)
+  const branch = (br && String(br[1])) || ''
+
+  const b = firstLine.match(/behind\s+(\d+)/)
+  const behind = (b && Number(b[1])) || 0
+
+  const a = firstLine.match(/ahead\s+(\d+)/)
+  const ahead = (a && Number(a[1])) || 0
+
+  return { branch, changes, behind, ahead }
 }
 
 /**
