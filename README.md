@@ -148,11 +148,17 @@ client@0.1.0 - [master] HEAD clean
 
 ## Roadmap
 
-- need to find better git module (native, isomorph, utils)
 - add unit tests for edge cases
 - add tests for v0.2.0
+- add switch to run commands in squence
 
 ## Changelog
+
+### v0.4.0
+
+#### Changed
+
+- dropped git packages (isomorphic-git, git-utils), replaced by shell commands
 
 ### v0.3.0
 
