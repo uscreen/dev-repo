@@ -5,7 +5,7 @@ tap.test('$ cli', async (t) => {
   const result = await cli([])
   t.strictEqual(
     true,
-    result.stdout.startsWith('Usage: cli [options] [command]'),
+    result.stderr.startsWith('Usage: cli [options] [command]'),
     'Should print usage information'
   )
   t.end()
