@@ -17,13 +17,13 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint '**/*.js' --fix",
-    "test": "tap test/**/*.test.js",
-    "test:cov": "tap --coverage-report=html test/**/*.test.js",
-    "test:ci": "tap --coverage-report=text-summary test/**/*.test.js"
+    "test": "c8 --all tap --no-coverage test/**/*.test.js",
+    "test:cov": "c8 --all --reporter html tap --no-coverage test/**/*.test.js",
+    "test:ci": "c8 --all --reporter text-summary tap --no-coverage test/**/*.test.js"
   },
   "engines": {
-		"node": ">=12"
-	},
+    "node": ">=12"
+  },
   "files": [
     "bin/",
     "src/"
@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@uscreen.de/eslint-config-prettystandard-node": "^0.1.2",
+    "c8": "^7.7.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "tap": "^15.0.1",
