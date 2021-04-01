@@ -3,6 +3,6 @@ os:
   - linux
   - osx
 node_js:
-  - 10
   - node
   - lts/*
+  - 12

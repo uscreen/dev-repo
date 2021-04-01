@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-const cli = require('commander')
-const path = require('path')
-
-const { root, version, REPO_DIR, repos, error, run } = require('../src/utils')
+import cli from 'commander'
+import path from 'path'
+import { root, version, REPO_DIR, repos, error, run } from '../src/utils.js'
 
 const repositoryRun = (command) => async (remote, local) => {
   const dir = path.resolve(root, REPO_DIR, local)

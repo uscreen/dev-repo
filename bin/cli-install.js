@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const cli = require('commander')
-const chalk = require('chalk')
-const path = require('path')
-const fs = require('fs-extra')
+import cli from 'commander'
+import chalk from 'chalk'
+import path from 'path'
+import fs from 'fs-extra'
 
-const {
+import {
   absoluteRepoPath,
   error,
   isGitRepo,
@@ -14,7 +14,7 @@ const {
   repos,
   run,
   version
-} = require('../src/utils')
+} from '../src/utils.js'
 
 /**
  * creates local target directory if missing

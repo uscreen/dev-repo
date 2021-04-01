@@ -1,13 +1,16 @@
 'use strict'
 
-const path = require('path')
-const { exec } = require('child_process')
-const fs = require('fs-extra')
+import path from 'path'
+import { exec } from 'child_process'
+import { fileURLToPath } from 'url'
+import fs from 'fs-extra'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // for easy string testing: disable color output of chalk
 process.env.FORCE_COLOR = 0
 
-module.exports.cli = (args, cwd) => {
+export const cli = (args, cwd) => {
   return new Promise((resolve) => {
     exec(
       `node ${path.resolve(__dirname, '../bin/cli.js')} ${args.join(' ')}`,
@@ -24,14 +27,14 @@ module.exports.cli = (args, cwd) => {
   })
 }
 
-module.exports.stubGit = () => {
+export const stubGit = () => {
   const cwd = path.resolve(__dirname, './_stubs/demorepo')
   exec('git init; git add .; git commit -m "init"', { cwd })
 }
 
-module.exports.cleanupGit = () => {
+export const cleanupGit = () => {
   fs.removeSync(path.resolve(__dirname, './_stubs/demorepo/.git'))
   fs.removeSync(path.resolve(__dirname, './_fixtures/addrepos/repos'))
 }
 
-module.exports.wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+export const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
