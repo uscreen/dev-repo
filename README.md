@@ -154,6 +154,16 @@ client@0.1.0 - [master] HEAD clean
 
 ## Changelog
 
+### v0.5.0
+
+#### Changed
+
+- refactored to ESM
+
+### v0.4.[1,2]
+
+- security fixes & upgrades
+
 ### v0.4.0
 
 #### Changed
