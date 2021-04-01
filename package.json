@@ -21,6 +21,9 @@
     "test:cov": "tap --coverage-report=html test/**/*.test.js",
     "test:ci": "tap --coverage-report=text-summary test/**/*.test.js"
   },
+  "engines": {
+		"node": ">=12"
+	},
   "files": [
     "bin/",
     "src/"
