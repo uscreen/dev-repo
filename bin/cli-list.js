@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const cli = require('commander')
-const chalk = require('chalk')
-const path = require('path')
-const readPkgUp = require('read-pkg-up')
+import cli from 'commander'
+import chalk from 'chalk'
+import path from 'path'
+import { readPackageUpSync } from 'read-pkg-up'
 
-const {
+import {
   root,
   version,
   REPO_DIR,
@@ -15,7 +15,7 @@ const {
   isGitRepo,
   gitStatus,
   run
-} = require('../src/utils')
+} from '../src/utils.js'
 
 /**
  * gather infos (version, revision, etc.) per repos
@@ -25,7 +25,7 @@ const repositoryInfo = async (remote, local) => {
   if (!isRepoDirectory(local) || !isGitRepo(local)) return
 
   const dir = path.resolve(root, REPO_DIR, local)
-  const { packageJson } = readPkgUp.sync({ cwd: dir })
+  const { packageJson } = readPackageUpSync({ cwd: dir })
 
   if (cli.fetch) {
     await run('git', ['fetch'], dir) // slows down a bit

@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 
-const { Command } = require('commander')
-const cli = new Command()
+import { Command } from 'commander'
 
 /**
  * package.json content
  */
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
 const { version } = require('../package.json')
+
+const cli = new Command()
 
 /**
  * define the command

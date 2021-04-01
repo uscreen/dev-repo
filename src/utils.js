@@ -1,58 +1,53 @@
-'use strict'
+/**
+ * my package.json content
+ */
+import { createRequire } from 'module'
 
-const chalk = require('chalk')
-const path = require('path')
-const fs = require('fs')
-const execa = require('execa')
-const readPkgUp = require('read-pkg-up')
-const { spawn } = require('child_process')
+import chalk from 'chalk'
+import path from 'path'
+import fs from 'fs'
+import execa from 'execa'
+import { spawn } from 'child_process'
+import { readPackageUpSync } from 'read-pkg-up'
 
 /**
  * the root directory of the project
  */
-const root = path.resolve(process.cwd())
-module.exports.root = root
-
-/**
- * my package.json content
- */
-const { version } = require('../package.json')
-module.exports.version = version
+export const root = path.resolve(process.cwd())
+const require = createRequire(import.meta.url)
+export const { version } = require('../package.json')
 
 /**
  * the projects package.json
  */
-const { packageJson } = readPkgUp.sync({ cwd: root })
-module.exports.packageJson = packageJson
+export const { packageJson } = readPackageUpSync({ cwd: root })
 
 /**
  * subdirectory containing working copies
  */
-const REPO_DIR = 'repos'
-module.exports.REPO_DIR = REPO_DIR
+export const REPO_DIR = 'repos'
 
 /**
  * a map of repos
  */
-module.exports.repos = new Map(Object.entries(packageJson.repos || {}))
+export const repos = new Map(Object.entries(packageJson.repos || {}))
 
 /**
  * simple error formating
  */
-module.exports.error = (error) => {
+export const error = (error) => {
   console.error(chalk.red(`ERROR: ${error.message} Aborting.`))
 }
 
 /**
  * get the absolute path to local repos directory
  */
-const absoluteRepoPath = (local) => path.resolve(root, REPO_DIR, local)
-module.exports.absoluteRepoPath = absoluteRepoPath
+export const absoluteRepoPath = (local) => path.resolve(root, REPO_DIR, local)
 
 /**
  * check to be an existing directory within repos path
  */
-module.exports.isRepoDirectory = (local) => {
+export const isRepoDirectory = (local) => {
   const dir = absoluteRepoPath(local)
   if (!fs.existsSync(dir)) {
     console.log(chalk.blue(local), '- missing:', chalk.red('no directory'))
@@ -64,7 +59,7 @@ module.exports.isRepoDirectory = (local) => {
 /**
  * check to be a git repos within repos path
  */
-module.exports.isGitRepo = (local) => {
+export const isGitRepo = (local) => {
   const dir = absoluteRepoPath(local)
   if (!fs.existsSync(path.resolve(dir, '.git'))) {
     console.log(chalk.blue(local), '- missing:', chalk.red('no repository'))
@@ -77,7 +72,7 @@ module.exports.isGitRepo = (local) => {
  * a git status returning { branch, changes, behind, ahead }
  * as object
  */
-module.exports.gitStatus = (dir) => {
+export const gitStatus = (dir) => {
   const { stdout } = execa.commandSync('git status -s -b', {
     cwd: dir,
     shell: process.env.SHELL
@@ -102,7 +97,7 @@ module.exports.gitStatus = (dir) => {
 /**
  * spawns a child process and returns a promise
  */
-module.exports.run = (command, parameters = [], cwd = null) =>
+export const run = (command, parameters = [], cwd = null) =>
   new Promise((resolve, reject) => {
     const c = spawn(command, parameters, {
       cwd,
