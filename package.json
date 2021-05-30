@@ -40,16 +40,16 @@
   "dependencies": {
     "commander": "^7.2.0",
     "execa": "^5.0.0",
-    "fs-extra": "^9.1.0",
+    "fs-extra": "^10.0.0",
     "read-pkg-up": "^8.0.0",
     "write-pkg": "^4.0.0"
   },
   "devDependencies": {
     "@uscreen.de/eslint-config-prettystandard-node": "^0.1.3",
-    "c8": "^7.7.0",
-    "lint-staged": "^10.5.4",
+    "c8": "^7.7.2",
+    "lint-staged": "^11.0.0",
     "prettier": "^2.2.1",
-    "tap": "^15.0.1",
+    "tap": "^15.0.9",
     "yorkie": "^2.0.0"
   }
 }
