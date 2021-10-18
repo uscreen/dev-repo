@@ -1,6 +1,6 @@
 {
   "name": "@uscreen.de/dev-repo",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "cli to manage dev repos",
   "main": "index.js",
   "type": "module",
