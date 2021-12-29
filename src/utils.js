@@ -6,7 +6,7 @@ import { createRequire } from 'module'
 import chalk from 'chalk'
 import path from 'path'
 import fs from 'fs'
-import execa from 'execa'
+import { execaCommandSync } from 'execa'
 import { spawn } from 'child_process'
 import { readPackageUpSync } from 'read-pkg-up'
 
@@ -73,7 +73,7 @@ export const isGitRepo = (local) => {
  * as object
  */
 export const gitStatus = (dir) => {
-  const { stdout } = execa.commandSync('git status -s -b', {
+  const { stdout } = execaCommandSync('git status -s -b', {
     cwd: dir,
     shell: process.env.SHELL
   })
