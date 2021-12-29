@@ -45,11 +45,11 @@
     "write-pkg": "^4.0.0"
   },
   "devDependencies": {
-    "@uscreen.de/eslint-config-prettystandard-node": "^0.1.4",
+    "@uscreen.de/eslint-config-prettystandard-node": "^0.2.0",
     "c8": "^7.10.0",
-    "lint-staged": "^11.2.3",
-    "prettier": "^2.4.1",
-    "tap": "^15.0.10",
+    "lint-staged": "^12.1.4",
+    "prettier": "^2.5.1",
+    "tap": "^15.1.5",
     "yorkie": "^2.0.0"
   }
 }
