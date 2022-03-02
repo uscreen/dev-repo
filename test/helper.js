@@ -27,14 +27,26 @@ export const cli = (args, cwd) => {
   })
 }
 
-export const stubGit = () => {
-  const cwd = path.resolve(__dirname, './_stubs/demorepo')
+export const stubGit = (testPhase = 'install') => {
+  if (testPhase === 'install') {
+    const cwd = path.resolve(__dirname, './_stubs/demorepo')
+    exec('git init; git add .; git commit -m "init"', { cwd })
+    return
+  }
+
+  const cwd = path.resolve(__dirname, `./_stubs/demorepo_${testPhase}`)
   exec('git init; git add .; git commit -m "init"', { cwd })
 }
 
-export const cleanupGit = () => {
-  fs.removeSync(path.resolve(__dirname, './_stubs/demorepo/.git'))
-  fs.removeSync(path.resolve(__dirname, './_fixtures/addrepos/repos'))
+export const cleanupGit = (testPhase = 'install') => {
+  if (testPhase === 'install') {
+    fs.removeSync(path.resolve(__dirname, './_stubs/demorepo/.git'))
+    fs.removeSync(path.resolve(__dirname, `./_fixtures/addrepos/repos`))
+    return
+  }
+
+  fs.removeSync(path.resolve(__dirname, `./_stubs/demorepo_${testPhase}/.git`))
+  fs.removeSync(path.resolve(__dirname, `./_fixtures/${testPhase}repos/repos`))
 }
 
 export const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))

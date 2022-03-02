@@ -101,6 +101,7 @@ tap.test('$ cli install (on empty directory)', async (t) => {
   fs.writeFileSync(path.resolve(reposDir, '.gitignore'), '!demorepo', 'utf8')
 
   const result2 = await cli(['install'], cwd)
+
   t.equal(0, result2.code, 'Another run should succeed')
 
   t.equal(
@@ -145,6 +146,37 @@ tap.test('$ cli install (on empty directory)', async (t) => {
     '.gitignore should not be overwritten'
   )
 
+  cleanupGit()
+  t.end()
+})
+
+tap.test('$ cli install single repo (demorepo)', async (t) => {
+  stubGit()
+  const cwd = './test/_fixtures/addrepos'
+  const result = await cli(['install', 'demorepo'], cwd)
+  t.equal(
+    true,
+    result.stdout.includes('git clone ../../_stubs/demorepo repos/demorepo'),
+    "Should print Cloning into 'repos/demorepo'"
+  )
+  t.equal(
+    true,
+    result.stderr.startsWith("Cloning into 'repos/demorepo'"),
+    "Should print Cloning into 'repos/demorepo'"
+  )
+  cleanupGit()
+  t.end()
+})
+
+tap.test('$ cli install (on invalid repository)', async (t) => {
+  stubGit()
+  const cwd = './test/_fixtures/addrepos'
+  const result = await cli(['install', 'invalid'], cwd)
+  t.equal(
+    true,
+    result.stderr.startsWith('ERROR: repository "invalid" does not exist'),
+    'Should print error information on invalid repository'
+  )
   cleanupGit()
   t.end()
 })

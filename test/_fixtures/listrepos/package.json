@@ -1,0 +1,9 @@
+{
+  "name": "sometest-dev-repo",
+  "version": "0.0.0",
+  "repos": {
+    "demorepo_list": "../../_stubs/demorepo_list",
+    "repo_1": "../../_stubs/demorepo_list",
+    "repo_2": "../../_stubs/demorepo_list"
+  }
+}

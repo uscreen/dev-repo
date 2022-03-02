@@ -12,6 +12,8 @@ stages:
 test:
   stage: test
   script:
+    - git config --global user.email "ci-test@localhost"
+    - git config --global user.name "CI"
     - yarn install --pure-lockfile --cache-folder .yarn
     - yarn test:ci
   coverage: '/^Statements\s*:\s*([^%]+)/'

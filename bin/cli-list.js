@@ -27,7 +27,8 @@ const repositoryInfo = async (remote, local) => {
   const dir = path.resolve(root, REPO_DIR, local)
   const { packageJson } = readPackageUpSync({ cwd: dir })
 
-  if (cli.fetch) {
+  const options = cli.opts()
+  if (options.fetch) {
     await run('git', ['fetch'], dir) // slows down a bit
   }
   // const branch = await igit.currentBranch({ dir, fs })
