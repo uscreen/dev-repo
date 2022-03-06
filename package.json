@@ -31,17 +31,17 @@
   ],
   "dependencies": {
     "commander": "^8.3.0",
-    "execa": "^6.0.0",
-    "fs-extra": "^10.0.0",
-    "read-pkg-up": "^9.0.0",
+    "execa": "^6.1.0",
+    "fs-extra": "^10.0.1",
+    "read-pkg-up": "^9.1.0",
     "write-pkg": "^5.0.0"
   },
   "devDependencies": {
     "@uscreen.de/eslint-config-prettystandard-node": "^0.2.2",
     "c8": "^7.11.0",
     "husky": ">=6",
-    "lint-staged": ">=12.3.2",
-    "tap": "^15.1.6"
+    "lint-staged": ">=12.3.5",
+    "tap": "^16.0.0"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
