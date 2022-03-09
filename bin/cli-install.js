@@ -57,16 +57,7 @@ const ensureGitClone = async (remote, local) => {
  */
 const yarnInstall = (local) => {
   const dir = absoluteRepoPath(local)
-  /* c8 ignore start */
-  const args = process.env.TAP
-    ? [
-        'install',
-        '--offline',
-        `--cache-folder ../../../../_yarn_cache/.yarn_${process.env.TAP_CHILD_ID}`
-      ]
-    : ['install']
-  /* c8 ignore stop */
-  return run('yarn', args, dir)
+  return run('yarn', ['install'], dir)
 }
 
 /**

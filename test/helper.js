@@ -42,11 +42,15 @@ export const cleanupGit = (testPhase = 'install') => {
   if (testPhase === 'install') {
     fs.removeSync(path.resolve(__dirname, './_stubs/demorepo/.git'))
     fs.removeSync(path.resolve(__dirname, `./_fixtures/addrepos/repos`))
+    fs.removeSync(path.resolve(__dirname, `./_fixtures/addrepos/.yarn_cache`))
     return
   }
 
   fs.removeSync(path.resolve(__dirname, `./_stubs/demorepo_${testPhase}/.git`))
   fs.removeSync(path.resolve(__dirname, `./_fixtures/${testPhase}repos/repos`))
+  fs.removeSync(
+    path.resolve(__dirname, `./_fixtures/${testPhase}repos/.yarn_cache`)
+  )
 }
 
 export const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
