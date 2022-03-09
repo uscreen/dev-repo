@@ -1,9 +1,10 @@
 import path from 'path'
 import fs from 'fs-extra'
 import tap from 'tap'
-import { cli, stubGit, cleanupGit } from './helper.js'
+import { cli, stubGit, cleanupGit, before } from './helper.js'
 
-// TODO fix on ci
+tap.before(before)
+
 tap.test('$ cli install (on empty directory)', async (t) => {
   stubGit()
   const cwd = './test/_fixtures/addrepos'

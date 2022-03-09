@@ -83,7 +83,9 @@ export const gitStatus = (dir) => {
   const firstLine = lines[0]
 
   const br = firstLine.match(/##\s+(\w+)/)
-  const branch = (br && String(br[1])) || ''
+
+  const branch =
+    (br && String(br[1])) || /* c8 ignore start */ '' /* c8 ignore stop */
 
   const b = firstLine.match(/behind\s+(\d+)/)
   const behind = (b && Number(b[1])) || 0

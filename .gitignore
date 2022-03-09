@@ -4,3 +4,4 @@
 /coverage
 /.eslintcache
 /.dccache
+/test/_yarn_cache

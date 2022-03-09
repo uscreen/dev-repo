@@ -1,11 +1,13 @@
 import tap from 'tap'
 import { promisify } from 'util'
 import { exec } from 'child_process'
-import { cli, stubGit, cleanupGit } from './helper.js'
+import { cli, stubGit, cleanupGit, before } from './helper.js'
 import { root } from '../src/utils.js'
 
 const execPromise = promisify(exec)
 const cwd = './test/_fixtures/pullrepos'
+
+tap.before(before)
 
 const prepare = async ({ addChanges = false }) => {
   if (!addChanges) {

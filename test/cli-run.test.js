@@ -1,6 +1,8 @@
 import tap from 'tap'
-import { cli, stubGit, cleanupGit } from './helper.js'
+import { cli, stubGit, cleanupGit, before } from './helper.js'
 const cwd = './test/_fixtures/runrepos'
+
+tap.before(before)
 
 const prepare = async () => {
   stubGit('run')

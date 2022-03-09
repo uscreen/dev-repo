@@ -50,3 +50,12 @@ export const cleanupGit = (testPhase = 'install') => {
 }
 
 export const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+/**
+ * Set fallback for `process.env.SHELL` as it may be undefined in CI container
+ * Reason: `yarn --cache-folder` does not work properly without.
+ * See /src/utils.js (run->spawn)
+ */
+export const before = () => {
+  process.env.SHELL = process.env.SHELL || 'sh'
+}

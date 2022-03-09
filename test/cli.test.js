@@ -1,5 +1,7 @@
 import tap from 'tap'
-import { cli } from './helper.js'
+import { cli, before } from './helper.js'
+
+tap.before(before)
 
 tap.test('$ cli', async (t) => {
   const result = await cli([])
