@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import cli from 'commander'
+import { Command } from 'commander'
 import chalk from 'chalk'
 import path from 'path'
 import fs from 'fs-extra'
@@ -15,6 +15,8 @@ import {
   run,
   version
 } from '../src/utils.js'
+
+const cli = new Command()
 
 /**
  * creates local target directory if missing

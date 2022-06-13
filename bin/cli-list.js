@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import cli from 'commander'
+import { Command } from 'commander'
 import chalk from 'chalk'
 import path from 'path'
 import { readPackageUpSync } from 'read-pkg-up'
@@ -16,6 +16,8 @@ import {
   gitStatus,
   run
 } from '../src/utils.js'
+
+const cli = new Command()
 
 /**
  * gather infos (version, revision, etc.) per repos
