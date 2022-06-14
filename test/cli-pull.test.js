@@ -11,7 +11,7 @@ tap.before(before)
 
 const prepare = async ({ addChanges = false }) => {
   if (!addChanges) {
-    stubGit('pull')
+    await stubGit('pull')
     return cli(['install'], cwd)
   }
 

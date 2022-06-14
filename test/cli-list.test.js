@@ -61,7 +61,7 @@ tap.test(
 )
 
 tap.test('$ cli list (with uncommitted local changes)', async (t) => {
-  stubGit('list')
+  await stubGit('list')
   const cwd = './test/_fixtures/listrepos'
   await cli(['install', 'demorepo_list'], cwd)
   const listResult = await cli(
@@ -82,7 +82,7 @@ tap.test('$ cli list (with uncommitted local changes)', async (t) => {
 })
 
 tap.test('$ cli list (with dirty head running ahead)', async (t) => {
-  stubGit('list')
+  await stubGit('list')
   const reposDir = `${root}/test/_fixtures/listrepos/repos`
   const dirBare = `${reposDir}/repo_bare`
   const dirRepo1 = `${reposDir}/repo_1`
@@ -127,7 +127,7 @@ tap.test('$ cli list (with dirty head running ahead)', async (t) => {
 })
 
 tap.test('$ cli list (with dirty head running behind)', async (t) => {
-  stubGit('list')
+  await stubGit('list')
   const reposDir = `${root}/test/_fixtures/listrepos/repos`
   const dirBare = `${reposDir}/repo_bare`
   const dirRepo1 = `${reposDir}/repo_1`
@@ -173,7 +173,7 @@ tap.test('$ cli list (with dirty head running behind)', async (t) => {
 
 tap.test('$ cli list (with different branch)', async (t) => {
   cleanupGit('list')
-  stubGit('list')
+  await stubGit('list')
   const reposDir = `${root}/test/_fixtures/listrepos/repos`
   const dirBare = `${reposDir}/repo_bare`
   const dirRepo1 = `${reposDir}/repo_1`

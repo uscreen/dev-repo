@@ -5,7 +5,7 @@ const cwd = './test/_fixtures/runrepos'
 tap.before(before)
 
 const prepare = async () => {
-  stubGit('run')
+  await stubGit('run')
   return cli(['install'], cwd)
 }
 

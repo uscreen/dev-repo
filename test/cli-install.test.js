@@ -6,7 +6,7 @@ import { cli, stubGit, cleanupGit, before } from './helper.js'
 tap.before(before)
 
 tap.test('$ cli install (on empty directory)', async (t) => {
-  stubGit()
+  await stubGit()
   const cwd = './test/_fixtures/addrepos'
   const reposDir = path.resolve(cwd, 'repos')
   const result = await cli(['install'], cwd)
@@ -153,7 +153,7 @@ tap.test('$ cli install (on empty directory)', async (t) => {
 })
 
 tap.test('$ cli install single repo (demorepo)', async (t) => {
-  stubGit()
+  await stubGit()
   const cwd = './test/_fixtures/addrepos'
   const result = await cli(['install', 'demorepo'], cwd)
   t.equal(
@@ -171,7 +171,7 @@ tap.test('$ cli install single repo (demorepo)', async (t) => {
 })
 
 tap.test('$ cli install (on invalid repository)', async (t) => {
-  stubGit()
+  await stubGit()
   const cwd = './test/_fixtures/addrepos'
   const result = await cli(['install', 'invalid'], cwd)
   t.equal(

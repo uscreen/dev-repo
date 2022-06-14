@@ -27,16 +27,17 @@ export const cli = (args, cwd) => {
   })
 }
 
-export const stubGit = (testPhase = 'install') => {
-  if (testPhase === 'install') {
-    const cwd = path.resolve(__dirname, './_stubs/demorepo')
-    exec('git init; git add .; git commit -m "init"', { cwd })
-    return
-  }
+export const stubGit = (testPhase = 'install') =>
+  new Promise((resolve, reject) => {
+    const cwd =
+      testPhase === 'install'
+        ? path.resolve(__dirname, './_stubs/demorepo')
+        : path.resolve(__dirname, `./_stubs/demorepo_${testPhase}`)
 
-  const cwd = path.resolve(__dirname, `./_stubs/demorepo_${testPhase}`)
-  exec('git init; git add .; git commit -m "init"', { cwd })
-}
+    exec('git init; git add .; git commit -m "init"', { cwd }, (err) =>
+      err ? reject(err) : resolve()
+    )
+  })
 
 export const cleanupGit = (testPhase = 'install') => {
   if (testPhase === 'install') {
