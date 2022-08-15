@@ -37,7 +37,7 @@
     "write-pkg": "^5.1.0"
   },
   "devDependencies": {
-    "@uscreen.de/eslint-config-prettystandard-node": "^0.2.7",
+    "@uscreen.de/eslint-config-prettystandard-node": "^0.2.8",
     "c8": "^7.12.0",
     "husky": ">=8.0.1",
     "lint-staged": ">=13.0.3",
