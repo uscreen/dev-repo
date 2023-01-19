@@ -30,7 +30,7 @@
     "src/"
   ],
   "dependencies": {
-    "commander": "^9.4.0",
+    "commander": "^10.0.0",
     "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
     "read-pkg-up": "^9.1.0",
