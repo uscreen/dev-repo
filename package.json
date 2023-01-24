@@ -19,7 +19,7 @@
     "lint": "eslint '**/*.js' --fix",
     "test": "c8 tap",
     "test:cov": "c8 --reporter=html --reporter=text tap",
-    "test:ci": "tap",
+    "test:ci": "c8 --reporter=lcovonly tap",
     "prepare": "husky install"
   },
   "engines": {
