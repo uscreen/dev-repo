@@ -1,7 +1,8 @@
 # dev-repo
 
-[![Build Status](https://travis-ci.com/uscreen/dev-repo.svg?branch=master)](https://travis-ci.com/uscreen/dev-repo)
+[![Test CI](https://github.com/uscreen/dev-repo/actions/workflows/main.yml/badge.svg)](https://github.com/uscreen/dev-repo/actions/workflows/node.js.yml)
 [![Known Vulnerabilities](https://snyk.io/test/github/uscreen/dev-repo/badge.svg?targetFile=package.json)](https://snyk.io/test/github/uscreen/dev-repo?targetFile=package.json)
+[![NPM Version](https://badge.fury.io/js/@uscreen.de%2Fdev-repo.svg)](https://badge.fury.io/js/@uscreen.de%2Fdev-repo)
 
 > Manage a group of repositories for local development
 
