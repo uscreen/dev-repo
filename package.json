@@ -12,7 +12,10 @@
     "repo-pull": "./bin/cli-pull.js"
   },
   "homepage": "https://github.com/uscreen/dev-repo",
-  "repository": "https://github.com:uscreen/dev-repo.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uscreen/dev-repo.git"
+  },
   "author": "Marcus Spiegel <spiegel@uscreen.de>",
   "license": "MIT",
   "scripts": {
