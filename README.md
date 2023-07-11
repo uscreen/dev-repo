@@ -156,6 +156,12 @@ client@0.1.0 - [master] HEAD clean
 
 ## Changelog
 
+### v0.7.0
+
+#### Removed
+
+- Support for Node.js < v16
+
 ### v0.6.0
 
 #### Changed
