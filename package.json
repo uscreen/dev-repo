@@ -37,7 +37,7 @@
     "execa": "^7.0.0",
     "fs-extra": "^11.1.0",
     "read-pkg-up": "^10.0.0",
-    "write-pkg": "^5.1.0"
+    "write-pkg": "^6.0.0"
   },
   "devDependencies": {
     "@uscreen.de/eslint-config-prettystandard-node": "^0.2.10",
