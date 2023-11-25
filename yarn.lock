@@ -2736,7 +2736,7 @@ read-pkg-up@^10.0.0:
     read-pkg "^8.1.0"
     type-fest "^4.2.0"
 
-read-pkg@^8.0.0, read-pkg@^8.1.0:
+read-pkg@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-8.1.0.tgz#6cf560b91d90df68bce658527e7e3eee75f7c4c7"
   integrity sha512-PORM8AgzXeskHO/WEv312k9U03B8K9JSiWF/8N9sUuFjBa+9SF2u6K7VClzXwDXab51jCd8Nd36CNM+zR97ScQ==
@@ -3271,7 +3271,7 @@ type-fest@^1.0.2:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-1.4.0.tgz#e9fb813fe3bf1744ec359d55d1affefa76f14be1"
   integrity sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==
 
-type-fest@^3.13.0, type-fest@^3.8.0:
+type-fest@^3.8.0:
   version "3.13.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.13.1.tgz#bb744c1f0678bea7543a2d1ec24e83e68e8c8706"
   integrity sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==
@@ -3280,6 +3280,11 @@ type-fest@^4.2.0:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.3.1.tgz#5cb58cdab5120f7ab0b40cfdc35073fb9adb651d"
   integrity sha512-pphNW/msgOUSkJbH58x8sqpq8uQj6b0ZKGxEsLKMUnGorRcDjrUaLS+39+/ub41JNTwrrMyJcUB8+YZs3mbwqw==
+
+type-fest@^4.6.0:
+  version "4.8.2"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.8.2.tgz#20d4cc287745723dbabf925de644eeb7de0349c1"
+  integrity sha512-mcvrCjixA5166hSrUoJgGb9gBQN4loMYyj9zxuMs/66ibHNEFd5JXMw37YVDx58L4/QID9jIzdTBB4mDwDJ6KQ==
 
 typed-array-length@^1.0.4:
   version "1.0.4"
@@ -3450,15 +3455,15 @@ write-json-file@^5.0.0:
     sort-keys "^5.0.0"
     write-file-atomic "^3.0.3"
 
-write-pkg@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/write-pkg/-/write-pkg-6.0.0.tgz#2a3f89b8c5f8ad2bb1987aafef4d4354d39b0a40"
-  integrity sha512-lGAH18qfqlukADIiFz1khQQO+AfPcNKf+oJIktIADWISarSSG9MPoWmveT+GhTGh9nQLpw0iPZyucgbqDngHeQ==
+write-pkg@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/write-pkg/-/write-pkg-6.0.1.tgz#5b5ec22edf199f372b68c54d3f80b112c8463a6e"
+  integrity sha512-ZwKp0+CQCNrJbhHStRy6IVDnVjvD4gYy6MhQLKgBnl85oaiTNXhvtuox7AqvOSf1wta0YW4U5JidjpJnd1i8TA==
   dependencies:
     deepmerge-ts "^5.1.0"
-    read-pkg "^8.0.0"
+    read-pkg "^8.1.0"
     sort-keys "^5.0.0"
-    type-fest "^3.13.0"
+    type-fest "^4.6.0"
     write-json-file "^5.0.0"
 
 ws@^7, ws@^7.5.5:
