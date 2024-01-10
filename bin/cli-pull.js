@@ -17,12 +17,13 @@ cli
   .version(version)
   .arguments('[repository]')
   .action(async (repository) => {
-    console.log('pulling')
+    console.log('pulling repositories')
     try {
       if (repository) {
         if (!repos.has(repository)) {
           throw Error(`repository "${repository}" does not exist`)
         }
+        console.log('pulling', repository)
         pull(repos.get(repository), repository)
       } else {
         repos.forEach(pull)
