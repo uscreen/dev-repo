@@ -68,6 +68,10 @@ const yarnInstall = (local) => {
 const repositoryInstall = async (remote, local) => {
   ensureLocalDir(local)
   await ensureGitClone(remote, local)
+
+  const options = cli.opts()
+  if (options.skipPackages) return
+
   await yarnInstall(local)
 }
 
@@ -77,6 +81,7 @@ const repositoryInstall = async (remote, local) => {
 cli
   .version(version)
   .arguments('[repository]')
+  .option('--skip-packages', "don't install packages")
   .action(async (repository) => {
     try {
       ensureGitIgnore()
