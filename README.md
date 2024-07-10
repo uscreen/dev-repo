@@ -156,6 +156,12 @@ client@0.1.0 - [master] HEAD clean
 
 ## Changelog
 
+### v0.8.0
+
+#### Added
+
+- optionally skip package installation
+
 ### v0.7.0
 
 #### Removed
