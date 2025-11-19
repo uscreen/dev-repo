@@ -20,9 +20,9 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint '**/*.js' --fix",
-    "test": "c8 tap",
-    "test:cov": "c8 --reporter=html --reporter=text tap",
-    "test:ci": "c8 --reporter=lcovonly tap"
+    "test": "GIT_CONFIG_GLOBAL=test/.gitconfig c8 tap",
+    "test:cov": "GIT_CONFIG_GLOBAL=test/.gitconfig c8 --reporter=html --reporter=text tap",
+    "test:ci": "GIT_CONFIG_GLOBAL=test/.gitconfig c8 --reporter=lcovonly tap"
   },
   "engines": {
     "node": ">=20"
