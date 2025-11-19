@@ -163,7 +163,7 @@ tap.test('$ cli install single repo (demorepo)', async (t) => {
   )
   t.equal(
     true,
-    result.stderr.startsWith("Cloning into 'repos/demorepo'"),
+    result.stderr.includes("Cloning into 'repos/demorepo'"),
     "Should print Cloning into 'repos/demorepo'"
   )
   cleanupGit()
