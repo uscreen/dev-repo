@@ -22,8 +22,7 @@
     "lint": "eslint '**/*.js' --fix",
     "test": "c8 tap",
     "test:cov": "c8 --reporter=html --reporter=text tap",
-    "test:ci": "c8 --reporter=lcovonly tap",
-    "prepare": "husky install"
+    "test:ci": "c8 --reporter=lcovonly tap"
   },
   "engines": {
     "node": ">=20"
@@ -42,11 +41,6 @@
   "devDependencies": {
     "@uscreen.de/eslint-config-prettystandard-node": "^0.2.10",
     "c8": "^8.0.0",
-    "husky": ">=8.0.1",
-    "lint-staged": ">=13.0.3",
     "tap": "^16.3.0"
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix"
   }
 }
